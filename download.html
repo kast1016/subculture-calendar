@@ -85,27 +85,28 @@
   <div class="page">
     <h1>기기별 앱 다운로드</h1>
     <p>이 페이지에 접속한 기기를 인식하고, 가장 적합한 다운로드 링크를 제공합니다. Android, Windows, macOS 등의 기기에서 바로 설치 파일로 이동할 수 있습니다.</p>
-    <p>실제 설치 파일은 웹 서버의 <code>/downloads</code> 폴더에 올려 두어야 합니다.</p>
+    <p>설치 파일은 GitHub Releases에 업로드되어 있으며, 이 페이지에서 바로 다운로드할 수 있습니다.</p>
 
     <div class="badge" id="detectedDevice">기기 감지 중...</div>
 
     <div class="buttons" id="downloadButtons">
       <a class="button" id="mainButton" href="#">다운로드 준비 중...</a>
-      <a class="button secondary hidden" id="fallbackWindows" href="./downloads/subculture-calendar-setup.exe">Windows용 .exe</a>
-      <a class="button secondary hidden" id="fallbackAndroid" href="./downloads/subculture-calendar.apk">Android용 .apk</a>
-      <a class="button secondary hidden" id="fallbackIos" href="./ios-download">iOS 안내</a>
+      <a class="button secondary hidden" id="fallbackWindows" href="https://github.com/kast1016/subculture-calendar/releases/download/v1.0.0/subculture-calendar-setup.exe">Windows용 .exe</a>
+      <a class="button secondary hidden" id="fallbackAndroid" href="https://github.com/kast1016/subculture-calendar/releases/download/v1.0.0/subculture-calendar.apk">Android용 .apk</a>
+      <a class="button secondary hidden" id="fallbackIos" href="https://github.com/kast1016/subculture-calendar/releases/tag/v1.0.0">릴리스 페이지 보기</a>
     </div>
 
     <div class="note" id="noteText">기기 인식이 실패하면 아래 버튼을 사용하세요.</div>
   </div>
 
   <script>
-    const origin = window.location.origin || (window.location.protocol + '//' + window.location.host);
-    const basePath = window.location.pathname.replace(/\/[^\/]*$/, '/');
+    const releaseBase = 'https://github.com/kast1016/subculture-calendar/releases/download/v1.0.0/';
+    const releasePage = 'https://github.com/kast1016/subculture-calendar/releases/tag/v1.0.0';
     const downloadLinks = {
-      windows: origin + basePath + 'downloads/subculture-calendar-setup.exe',
-      android: origin + basePath + 'downloads/subculture-calendar.apk',
-      macos: origin + basePath + 'downloads/subculture-calendar.dmg',
+      windows: releaseBase + 'subculture-calendar-setup.exe',
+      android: releaseBase + 'subculture-calendar.apk',
+      macos: releasePage,
+      unknown: releasePage,
     };
 
     function getDeviceInfo() {
@@ -131,8 +132,8 @@
       detected.textContent = `감지된 기기: ${device}`;
       fallbackWindows.href = downloadLinks.windows;
       fallbackAndroid.href = downloadLinks.android;
-      fallbackIos.href = '#';
-      fallbackIos.classList.add('hidden');
+      fallbackIos.href = downloadLinks.unknown;
+      fallbackIos.classList.remove('hidden');
 
       fallbackWindows.classList.remove('hidden');
       fallbackAndroid.classList.remove('hidden');
@@ -144,11 +145,11 @@
         mainButton.textContent = 'Windows 설치 프로그램 다운로드';
         mainButton.href = downloadLinks.windows;
       } else if (device === 'macos') {
-        mainButton.textContent = 'macOS 설치 파일 다운로드';
+        mainButton.textContent = '릴리스 페이지로 이동';
         mainButton.href = downloadLinks.macos;
       } else {
-        mainButton.textContent = 'Android / Windows 다운로드 보기';
-        mainButton.href = '#downloadButtons';
+        mainButton.textContent = '릴리스 페이지로 이동';
+        mainButton.href = downloadLinks.unknown;
       }
 
       noteText.textContent = '카톡, 디스코드로 공유한 링크에서도 이 페이지를 열어 설치할 수 있습니다. 아래 버튼을 눌러 주세요.';

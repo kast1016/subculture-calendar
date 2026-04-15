@@ -53,7 +53,9 @@ function build() {
     copyFile(sourcePath, targetPath);
   });
 
-  copyDir(path.join(root, 'downloads'), path.join(outDir, 'downloads'));
+  // The downloads are hosted through GitHub Releases, so we no longer copy
+  // the large installer binaries into the web build.
+  // copyDir(path.join(root, 'downloads'), path.join(outDir, 'downloads'));
 
   console.log(`Web build created in ${outDir}`);
 }
