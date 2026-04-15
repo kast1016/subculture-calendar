@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">서브컬처 행사 캘린더</string>
+    <string name="title_activity_main">서브컬처 행사 캘린더</string>
+    <string name="package_name">com.subculturecalendar.app</string>
+    <string name="custom_url_scheme">com.subculturecalendar.app</string>
+</resources>

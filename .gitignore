@@ -1,0 +1,49 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment variables
+.env
+
+# VS Code
+.vscode/
+
+# Virtual environments
+.venv/
+
+# Byte-compiled / optimized / DLL files
+*.pyo
+*.pyd
+
+# Distribution / packaging
+build/
+dist/
+www/
+*.egg-info/
+
+# Node/npm
+node_modules/
+
+# Build / output folders
+dist/
+www/
+downloads/
+
+# Tools
+tools/PortableGit/
+tools/PortableGit-*.7z.exe
+tools/supabase.exe
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Android/iOS local configuration
+android/local.properties
+ios/App/App/GoogleService-Info.plist

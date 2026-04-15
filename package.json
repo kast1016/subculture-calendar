@@ -1,0 +1,74 @@
+{
+  "name": "subculture-calendar",
+  "version": "1.0.0",
+  "description": "서브컬처 행사 캘린더 데스크톱 및 모바일 앱",
+  "author": "Subculture Calendar Team",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:web": "node scripts/build-web.js",
+    "generate:icons": "python scripts/generate-icons.py",
+    "cap:sync": "npx cap sync",
+    "cap:open:android": "npx cap open android",
+    "cap:add:android": "npx cap add android",
+    "cap:add:ios": "npx cap add ios",
+    "android:build-debug": "npm run build:web && npx cap sync android && cd android && gradlew.bat assembleDebug",
+    "android:build-release": "npm run build:web && npx cap sync android && cd android && gradlew.bat assembleRelease",
+    "ios:sync": "npm run build:web && npx cap sync ios",
+    "build:win": "npm run build:web && npx electron-builder --win nsis --x64",
+    "package:win": "npm run build:win",
+    "serve:www": "node scripts/start-share-server.js",
+    "deploy:gh-pages": "npm run build:web && npx gh-pages -d www",
+    "build:all": "npm run build:web && npx electron-builder",
+    "apply:supabase": "node scripts/apply-supabase-schema.js",
+    "setup:windows-env": "powershell.exe -ExecutionPolicy Bypass -File scripts/setup-windows-env.ps1"
+  },
+  "build": {
+    "appId": "com.subculturecalendar.app",
+    "productName": "서브컬처 행사 캘린더",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "styles.css",
+      "app.js",
+      "supabaseClient.js",
+      "events.json",
+      "www/**",
+      "assets/icon.ico"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true
+    }
+  },
+  "dependencies": {
+    "@capacitor/core": "^5.0.0",
+    "@supabase/supabase-js": "^2.103.0",
+    "axios": "^1.7.6",
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^5.7.8",
+    "@capacitor/cli": "^5.0.0",
+    "@capacitor/ios": "^5.7.8",
+    "electron": "^26.5.0",
+    "electron-builder": "^24.6.0",
+    "gh-pages": "^5.0.0",
+    "typescript": "^5.5.4"
+  }
+}
