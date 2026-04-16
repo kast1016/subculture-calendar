@@ -23,6 +23,7 @@ const closeModalBtn = document.getElementById('closeModalBtn');
 const eventForm = document.getElementById('eventForm');
 const modalTitle = document.getElementById('modalTitle');
 const deleteEventBtn = document.getElementById('deleteEventBtn');
+const cancelModalBtn = document.getElementById('cancelModalBtn');
 const eventTitle = document.getElementById('eventTitle');
 const eventStart = document.getElementById('eventStart');
 const eventEnd = document.getElementById('eventEnd');
@@ -740,6 +741,9 @@ function bindEvents() {
   jumpBtn.addEventListener('click', jumpToSelectedMonth);
 
   closeModalBtn.addEventListener('click', closeModal);
+  if (cancelModalBtn) {
+    cancelModalBtn.addEventListener('click', closeModal);
+  }
   window.addEventListener('resize', updateMobileViewUI);
   modalBackdrop.addEventListener('click', (event) => {
     if (event.target === modalBackdrop) closeModal();

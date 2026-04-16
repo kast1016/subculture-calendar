@@ -3,40 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>앱 다운로드</title>
-  <meta http-equiv="refresh" content="0;url=download/" />
-  <script>window.location.href = 'download/';</script>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: #0b0d14;
-      color: #f4f7ff;
-      font-family: 'Noto Sans KR', sans-serif;
-      text-align: center;
-    }
-    .message {
-      max-width: 560px;
-      padding: 24px;
-      border-radius: 20px;
-      background: rgba(17, 21, 31, 0.94);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    a {
-      color: #ff7b72;
-      text-decoration: none;
-      font-weight: 600;
-    }
-  </style>
+  <title>서브컬처 행사 캘린더</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="message">
-    <h1>앱 다운로드 페이지로 이동 중입니다...</h1>
-    <p>자동으로 이동하지 않으면 아래 버튼을 눌러 주세요.</p>
-    <p><a href="download/">다운로드 페이지로 이동</a></p>
+  <div class="app-shell">
+    <header class="app-header">
+      <div>
+        <h1>서브컬처 행사 캘린더</h1>
+        <p>공식 행사와 개인 일정을 한 번에 관리하세요.</p>
+        <p id="syncStatus">앱을 로드 중입니다...</p>
+      </div>
+      <div class="header-actions">
+        <button type="button" id="todayBtn">오늘</button>
+        <button type="button" id="addEventBtn">행사 추가</button>
+      </div>
+    </header>
+
+    <div class="app-grid">
+      <section class="calendar-panel">
+        <div class="calendar-top">
+          <div>
+            <p id="currentMonthLabel">--</p>
+          </div>
+          <div class="calendar-nav">
+            <button type="button" id="prevMonthBtn">◀</button>
+            <button type="button" id="nextMonthBtn">▶</button>
+          </div>
+          <div class="calendar-jump">
+            <label>
+              연도
+              <select id="yearSelect"></select>
+            </label>
+            <label>
+              월
+              <select id="monthSelect"></select>
+            </label>
+            <button type="button" id="jumpBtn">이동</button>
+          </div>
+        </div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+      </section>
+
+      <section class="event-panel">
+        <div class="event-panel-header">
+          <div>
+            <h2 id="selectedDayLabel">선택된 날짜: 전체</h2>
+            <p class="event-summary">이번 달 행사: <strong id="monthEventCount">0</strong>개</p>
+          </div>
+        </div>
+        <div class="event-list" id="eventList"></div>
+      </section>
+    </div>
+
+    <nav class="mobile-tabbar hidden" id="mobileTabbar">
+      <button type="button" class="active" id="tabCalendarBtn" aria-selected="true">캘린더</button>
+      <button type="button" id="tabEventsBtn" aria-selected="false">일정</button>
+    </nav>
   </div>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">행사 추가</h2>
+        <button type="button" id="closeModalBtn">닫기</button>
+      </div>
+      <form id="eventForm">
+        <label>
+          제목
+          <input type="text" id="eventTitle" required placeholder="행사명을 입력하세요" />
+        </label>
+        <label>
+          시작일
+          <input type="date" id="eventStart" required />
+        </label>
+        <label>
+          종료일
+          <input type="date" id="eventEnd" />
+        </label>
+        <label>
+          장소
+          <input type="text" id="eventLocation" placeholder="장소를 입력하세요" />
+        </label>
+        <label>
+          카테고리
+          <input type="text" id="eventCategory" placeholder="예: 코믹월드, 일러스트" />
+        </label>
+        <label>
+          홈페이지
+          <input type="url" id="eventUrl" placeholder="https://" />
+        </label>
+        <label>
+          메모
+          <textarea id="eventNotes" rows="4" placeholder="추가 정보를 입력하세요"></textarea>
+        </label>
+        <div class="modal-actions">
+          <button type="button" class="danger hidden" id="deleteEventBtn">삭제</button>
+          <button type="button" class="secondary" id="cancelModalBtn">취소</button>
+          <button type="submit">저장</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>

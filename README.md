@@ -73,6 +73,8 @@ Windows에서 이 명령은 로컬 `tools/PortableGit/cmd`를 사용합니다.
 - Android APK: `https://github.com/kast1016/subculture-calendar/releases/latest/download/app-release-signed.apk`
 - 릴리스 페이지: `https://github.com/kast1016/subculture-calendar/releases/latest`
 
+Android 모바일에서는 위 APK 링크를 탭하여 직접 다운로드하고 설치하면 앱을 실행할 수 있습니다. Windows에서는 EXE 설치 프로그램을 내려받아 설치하세요.
+
 ## Supabase
 `supabaseClient.js`는 현재 기본으로 `supabase = null` 상태입니다. 실제 Supabase 연결을 사용하려면 파일을 수정해 주세요.
 
@@ -87,7 +89,8 @@ Windows에서 이 명령은 로컬 `tools/PortableGit/cmd`를 사용합니다.
 
 ## 참고
 - `android/release.keystore`는 `.gitignore`에 포함되어 있습니다.
-- `404.html` 및 `index.html`은 모두 다운로드 페이지로 리디렉션됩니다.
+- `index.html`은 데스크톱 및 웹 앱의 캘린더 진입 페이지입니다.
+- `404.html`은 잘못된 URL 접근 시 다운로드 페이지로 리디렉션됩니다.
 - `download.html`은 접속 기기를 자동 감지하여 가장 적합한 설치 링크를 표시합니다.
 - `file://` 환경에서는 브라우저 보안 제한으로 `fetch`가 실패할 수 있습니다.
 - `http://` 또는 `https://` 환경에서 실행하세요.
