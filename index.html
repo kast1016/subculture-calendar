@@ -3,111 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>서브컬처 행사 캘린더</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>앱 다운로드</title>
+  <meta http-equiv="refresh" content="0;url=/download.html" />
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #0b0d14;
+      color: #f4f7ff;
+      font-family: 'Noto Sans KR', sans-serif;
+      text-align: center;
+    }
+    .message {
+      max-width: 560px;
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(17, 21, 31, 0.94);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    a {
+      color: #ff7b72;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
-  <div class="app-shell" id="appShell">
-    <header class="app-header">
-      <div>
-        <h1>서브컬처 행사 캘린더</h1>
-        <p id="headerSubtitle">공식 행사와 개인 일정을 함께 관리하세요.</p>
-      </div>
-      <div class="header-actions">
-        <span class="user-info" id="syncStatus">일정 로딩 중...</span>
-      </div>
-    </header>
-
-    <div class="mobile-tabbar hidden" id="mobileTabbar" role="tablist">
-      <button type="button" id="tabCalendarBtn" class="mobile-tab active" role="tab" aria-selected="true">캘린더</button>
-      <button type="button" id="tabEventsBtn" class="mobile-tab" role="tab" aria-selected="false">행사</button>
-    </div>
-
-    <main class="app-grid">
-      <section class="calendar-panel">
-        <div class="calendar-top">
-          <div class="calendar-nav">
-            <button type="button" id="prevMonthBtn">◀</button>
-            <button type="button" id="todayBtn">오늘</button>
-            <button type="button" id="nextMonthBtn">▶</button>
-          </div>
-          <div>
-            <h2 id="currentMonthLabel"></h2>
-          </div>
-          <div class="calendar-jump">
-            <label>
-              연도
-              <select id="yearSelect"></select>
-            </label>
-            <label>
-              월
-              <select id="monthSelect"></select>
-            </label>
-            <button type="button" id="jumpBtn">이동</button>
-          </div>
-        </div>
-
-        <div class="calendar-grid" id="calendarGrid"></div>
-      </section>
-
-      <section class="event-panel">
-        <div class="event-panel-header">
-          <h3>월별 행사</h3>
-          <button type="button" id="addEventBtn">행사 추가</button>
-        </div>
-        <div class="event-summary">
-          <div><strong id="monthEventCount">0</strong>개의 행사</div>
-          <div id="selectedDayLabel">선택된 날짜: 전체</div>
-        </div>
-        <div class="event-list" id="eventList"></div>
-      </section>
-    </main>
+  <div class="message">
+    <h1>앱 다운로드 페이지로 이동 중입니다...</h1>
+    <p>자동으로 이동하지 않으면 아래 버튼을 눌러 주세요.</p>
+    <p><a href="/download.html">다운로드 페이지로 이동</a></p>
   </div>
-
-  <div class="modal-backdrop hidden" id="modalBackdrop">
-    <div class="modal" role="dialog" aria-modal="true">
-      <div class="modal-header">
-        <h2 id="modalTitle">행사 추가</h2>
-        <button type="button" id="closeModalBtn">✕</button>
-      </div>
-      <form id="eventForm">
-        <label>
-          행사명
-          <input type="text" id="eventTitle" required maxlength="100" />
-        </label>
-        <label>
-          시작일
-          <input type="date" id="eventStart" required />
-        </label>
-        <label>
-          종료일
-          <input type="date" id="eventEnd" required />
-        </label>
-        <label>
-          장소
-          <input type="text" id="eventLocation" maxlength="100" />
-        </label>
-        <label>
-          행사 종류
-          <input type="text" id="eventCategory" maxlength="50" />
-        </label>
-        <label>
-          링크
-          <input type="url" id="eventUrl" placeholder="https://..." />
-        </label>
-        <label>
-          메모
-          <textarea id="eventNotes" rows="3" maxlength="300"></textarea>
-        </label>
-        <div class="modal-actions">
-          <button type="submit" id="saveEventBtn">저장</button>
-          <button type="button" id="deleteEventBtn" class="danger hidden">삭제</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-
-  <script type="module" src="app.js"></script>
 </body>
 </html>
