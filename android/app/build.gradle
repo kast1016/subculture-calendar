@@ -18,7 +18,7 @@ android {
     }
     signingConfigs {
         release {
-            def keystoreFile = file('release.keystore')
+            def keystoreFile = rootProject.file('release.keystore')
             if (keystoreFile.exists()) {
                 storeFile keystoreFile
                 storePassword project.findProperty('RELEASE_STORE_PASSWORD') ?: System.getenv('RELEASE_STORE_PASSWORD') ?: 'Subcultur3!2026'
