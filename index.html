@@ -23,7 +23,16 @@
           <button type="button" id="todayBtn">오늘</button>
           <button type="button" id="topAddEventBtn">행사 추가</button>
         </div>
-            <button type="button" id="nextMonthBtn">▶</button>
+      </div>
+    </header>
+
+    <div class="app-grid">
+      <section class="calendar-panel">
+        <div class="calendar-top">
+          <div id="currentMonthLabel">2026년 4월</div>
+          <div class="calendar-nav">
+            <button type="button" id="prevMonthBtn" aria-label="이전 달">◀</button>
+            <button type="button" id="nextMonthBtn" aria-label="다음 달">▶</button>
           </div>
         </div>
         <div class="calendar-grid" id="calendarGrid"></div>
@@ -45,7 +54,8 @@
       <button type="button" id="tabEventsBtn" aria-selected="false">일정</button>
     </nav>
 
-    <button type="button" class="fab" id="fabAddEventBtn" aria-label="행사 추가">+
+    <button type="button" class="fab" id="fabAddEventBtn" aria-label="행사 추가">
+      +
       <span>추가</span>
     </button>
   </div>
