@@ -26,7 +26,7 @@
     "endDate": "2026-01-18",
     "location": "광주디자인진흥원",
     "category": "페스티벌",
-    "url": "https://official.example.com/skycode-festival-30",
+    "url": "https://x.com/SKYCHORD_160111?lang=ko",
     "notes": "광주디자인진흥원"
   },
   {
@@ -156,7 +156,7 @@
     "endDate": "2026-03-08",
     "location": "광주디자인진흥원",
     "category": "페스티벌",
-    "url": "https://official.example.com/skycode-festival-31",
+    "url": "https://x.com/SKYCHORD_160111?lang=ko",
     "notes": "광주디자인진흥원"
   },
   {
@@ -196,7 +196,7 @@
     "endDate": "2026-03-21",
     "location": "서울숲",
     "category": "촬영회",
-    "url": "https://official.example.com/cospeace-86",
+    "url": "https://cafe.naver.com/f-e/cafes/15321840/articles/490137?boardtype=L&menuid=414&referrerAllArticles=false",
     "notes": "서울숲"
   },
   {
@@ -216,7 +216,7 @@
     "endDate": "2026-03-22",
     "location": "합정 드림홀",
     "category": "댄스 이벤트",
-    "url": "https://official.example.com/coreand-1",
+    "url": "https://x.com/cosrandomdance",
     "notes": "합정 드림홀"
   },
   {
@@ -246,7 +246,7 @@
     "endDate": "2026-03-28",
     "location": "부천 뉴코아아울렛",
     "category": "파티",
-    "url": "https://official.example.com/bucheon-cosparty",
+    "url": "https://x.com/illustar_cafe/status/2032376356605215002",
     "notes": "부천 뉴코아아울렛"
   },
   {
@@ -260,23 +260,13 @@
     "notes": "신촌 유플렉스"
   },
   {
-    "id": "official-cosplay-on-stage-5",
-    "title": "제5회 코스플레이 온 스테이지",
-    "startDate": "2026-04-04",
-    "endDate": "2026-04-04",
-    "location": "광주 청소년 수련관",
-    "category": "공연",
-    "url": "https://official.example.com/cosplay-on-stage-5",
-    "notes": "광주 청소년 수련관"
-  },
-  {
     "id": "official-skycode-photoshoot-13",
     "title": "스카이코드 제13회 촬영회",
     "startDate": "2026-04-05",
     "endDate": "2026-04-05",
     "location": "상무조각공원",
     "category": "촬영회",
-    "url": "https://official.example.com/skycode-photoshoot-13",
+    "url": "https://x.com/SKYCHORD_160111?lang=ko",
     "notes": "상무조각공원"
   },
   {
@@ -296,7 +286,7 @@
     "endDate": "2026-04-12",
     "location": "매헌시민의 숲",
     "category": "촬영회",
-    "url": "https://official.example.com/cherry-blossom-cospeace",
+    "url": "https://cafe.naver.com/f-e/cafes/15321840/articles/490336?boardtype=L&menuid=414&referrerAllArticles=false",
     "notes": "매헌시민의 숲"
   },
   {
@@ -308,16 +298,6 @@
     "category": "촬영회",
     "url": "https://x.com/cos_arena",
     "notes": "수원 진아트센터"
-  },
-  {
-    "id": "official-dancopa-2",
-    "title": "댄코파 2회차",
-    "startDate": "2026-04-18",
-    "endDate": "2026-04-18",
-    "location": "서울 청소년센터",
-    "category": "댄스 이벤트",
-    "url": "https://official.example.com/dancopa-2",
-    "notes": "서울 청소년센터"
   },
   {
     "id": "official-coscomic-89",
@@ -336,7 +316,7 @@
     "endDate": "2026-04-25",
     "location": "대구 스파크랜드",
     "category": "콜라보 이벤트",
-    "url": "https://official.example.com/dakihabara-arcana-studio",
+    "url": "https://x.com/Arcana_Photo/status/2041078400610402643",
     "notes": "대구 스파크랜드"
   },
   {
@@ -358,16 +338,6 @@
     "category": "코믹월드",
     "url": "https://comicw.net",
     "notes": "수원메쎄"
-  },
-  {
-    "id": "official-busan-content-cos-festival",
-    "title": "부산 콘텐츠 코스 페스티벌",
-    "startDate": "2026-05-03",
-    "endDate": "2026-05-03",
-    "location": "다대포해수욕장",
-    "category": "페스티벌",
-    "url": "https://official.example.com/busan-content-cos-festival",
-    "notes": "다대포해수욕장"
   },
   {
     "id": "official-cosarena-31",
@@ -396,7 +366,7 @@
     "endDate": "2026-05-16",
     "location": "수도권 미정",
     "category": "온리전",
-    "url": "https://official.example.com/genres-zone-zero-unofficial-only",
+    "url": "https://x.com/ZZZonlyevent",
     "notes": "수도권 미정"
   },
   {
@@ -426,7 +396,7 @@
     "endDate": "2026-05-16",
     "location": "매헌시민의 숲",
     "category": "촬영회",
-    "url": "https://official.example.com/cospeace-88",
+    "url": "https://cafe.naver.com/f-e/cafes/15321840/articles/491454?boardtype=L&menuid=414&referrerAllArticles=false",
     "notes": "매헌시민의 숲"
   },
   {
@@ -436,7 +406,7 @@
     "endDate": "2026-05-24",
     "location": "킨텍스",
     "category": "게임전시회",
-    "url": "https://official.example.com/playx4-2026",
+    "url": "https://www.playx4.or.kr/",
     "notes": "킨텍스"
   },
   {
@@ -446,7 +416,7 @@
     "endDate": "2026-05-24",
     "location": "롯데월드 부산",
     "category": "페스티벌",
-    "url": "https://official.example.com/cocofe-lotteworld-busan",
+    "url": "https://x.com/Busan_cocoparty/status/2043945200033378721",
     "notes": "롯데월드 부산"
   },
   {
@@ -456,7 +426,7 @@
     "endDate": "2026-05-23",
     "location": "킨텍스",
     "category": "페스티벌",
-    "url": "https://official.example.com/gicof-10",
+    "url": "https://www.gicof.com",
     "notes": "킨텍스"
   },
   {
@@ -476,18 +446,8 @@
     "endDate": "2026-05-31",
     "location": "킨텍스",
     "category": "이벤트",
-    "url": "https://official.example.com/mingjo-wuthering-wave-anniversary",
+    "url": "https://game.naver.com/lounge/WutheringWaves/board/detail/7384956",
     "notes": "킨텍스"
-  },
-  {
-    "id": "official-inditeras-190",
-    "title": "인디테라스 190",
-    "startDate": "2026-05-30",
-    "endDate": "2026-05-30",
-    "location": "진주문화제작소",
-    "category": "전시회",
-    "url": "https://official.example.com/inditeras-190",
-    "notes": "진주문화제작소"
   },
   {
     "id": "official-illustar-on-stage-1",
@@ -506,7 +466,7 @@
     "endDate": "2026-06-13",
     "location": "Brst studio",
     "category": "무대 이벤트",
-    "url": "https://official.example.com/stage-minjok-3",
+    "url": "https://x.com/Stage_nation",
     "notes": "Brst studio"
   },
   {
@@ -546,7 +506,7 @@
     "endDate": "2026-06-28",
     "location": "아트포레스트 청량리",
     "category": "페스티벌",
-    "url": "https://official.example.com/acosta-seoul",
+    "url": "https://x.com/acosta_info/status/2042535956155150586",
     "notes": "아트포레스트 청량리"
   },
   {
@@ -636,7 +596,7 @@
     "endDate": "2026-08-16",
     "location": "코엑스",
     "category": "페스티벌",
-    "url": "https://official.example.com/seoul-popcon-2026",
+    "url": "https://seoulpopcon.org/",
     "notes": "코엑스"
   },
   {
@@ -686,7 +646,7 @@
     "endDate": "2026-09-13",
     "location": "김대중컨벤션센터",
     "category": "페스티벌",
-    "url": "https://official.example.com/acefair-juicy-festival",
+    "url": "https://www.acefair.or.kr/fairOnline.do?selAction=single_page&SYSTEM_IDX=21#/main",
     "notes": "김대중컨벤션센터"
   },
   {
@@ -696,7 +656,7 @@
     "endDate": "2026-09-20",
     "location": "한국만화박물관",
     "category": "페스티벌",
-    "url": "https://official.example.com/gicof-10-september",
+    "url": "https://www.gicof.com",
     "notes": "한국만화박물관"
   },
   {
@@ -706,7 +666,7 @@
     "endDate": "2026-09-19",
     "location": "EXCO",
     "category": "전시회",
-    "url": "https://official.example.com/daegu-content-fair-5",
+    "url": "https://www.dccf.co.kr/kor/",
     "notes": "EXCO"
   },
   {
@@ -716,7 +676,7 @@
     "endDate": "2026-09-20",
     "location": "한국만화박물관",
     "category": "페스티벌",
-    "url": "https://official.example.com/bucheon-comic-festival-29",
+    "url": "https://www.bicof.com/en",
     "notes": "한국만화박물관"
   },
   {
@@ -756,7 +716,7 @@
     "endDate": "2026-11-22",
     "location": "벡스코 제1전시장",
     "category": "게임전시회",
-    "url": "https://official.example.com/gstar-2026",
+    "url": "https://www.gstar.or.kr/",
     "notes": "벡스코 제1전시장"
   },
   {

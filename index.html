@@ -15,8 +15,10 @@
         <p id="syncStatus">앱을 로드 중입니다...</p>
       </div>
       <div class="header-actions">
-        <button type="button" id="todayBtn">오늘</button>
-        <button type="button" id="addEventBtn">행사 추가</button>
+        <div class="date-picker-row">
+          <select id="yearSelect" class="picker-button" aria-label="연도 선택"></select>
+          <select id="monthSelect" class="picker-button" aria-label="월 선택"></select>
+        </div>
       </div>
     </header>
 
@@ -29,17 +31,6 @@
           <div class="calendar-nav">
             <button type="button" id="prevMonthBtn">◀</button>
             <button type="button" id="nextMonthBtn">▶</button>
-          </div>
-          <div class="calendar-jump">
-            <label>
-              연도
-              <select id="yearSelect"></select>
-            </label>
-            <label>
-              월
-              <select id="monthSelect"></select>
-            </label>
-            <button type="button" id="jumpBtn">이동</button>
           </div>
         </div>
         <div class="calendar-grid" id="calendarGrid"></div>
@@ -60,6 +51,10 @@
       <button type="button" class="active" id="tabCalendarBtn" aria-selected="true">캘린더</button>
       <button type="button" id="tabEventsBtn" aria-selected="false">일정</button>
     </nav>
+
+    <button type="button" class="fab" id="fabAddEventBtn" aria-label="행사 추가">+
+      <span>추가</span>
+    </button>
   </div>
 
   <div class="modal-backdrop hidden" id="modalBackdrop">

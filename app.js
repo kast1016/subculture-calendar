@@ -13,8 +13,7 @@ const nextMonthBtn = document.getElementById('nextMonthBtn');
 const todayBtn = document.getElementById('todayBtn');
 const yearSelect = document.getElementById('yearSelect');
 const monthSelect = document.getElementById('monthSelect');
-const jumpBtn = document.getElementById('jumpBtn');
-const addEventBtn = document.getElementById('addEventBtn');
+const fabAddEventBtn = document.getElementById('fabAddEventBtn');
 const mobileTabbar = document.getElementById('mobileTabbar');
 const tabCalendarBtn = document.getElementById('tabCalendarBtn');
 const tabEventsBtn = document.getElementById('tabEventsBtn');
@@ -287,6 +286,9 @@ function selectDay(date) {
   } else {
     selectedDate = clickedDate;
     selectedEventId = null;
+    if (isMobileLayout()) {
+      mobileView = 'events';
+    }
   }
   render();
 }
@@ -337,42 +339,24 @@ function renderCalendar() {
 
     const dayEvents = getDayEvents(cellDate);
     if (dayEvents.length > 0) {
-      dayEvents.forEach((event) => {
-        const badge = document.createElement('button');
-        badge.type = 'button';
-        badge.className = `day-event-badge ${event.source === 'official' ? 'official' : 'user'} ${getCategoryClass(event.category)}`;
-        if (selectedEventId === event.id) {
-          badge.classList.add('active');
-        }
-        const validUrl = isValidExternalUrl(event.url);
-        badge.setAttribute('aria-label', `${event.title} ${event.category || ''}`);
-        badge.title = validUrl ? '더블클릭 시 홈페이지 이동' : event.title;
+      const indicatorWrapper = document.createElement('div');
+      indicatorWrapper.className = 'day-indicators';
+      const hasOfficial = dayEvents.some((event) => event.source === 'official');
+      const hasUser = dayEvents.some((event) => event.source !== 'official');
 
-        const badgeDot = document.createElement('span');
-        badgeDot.className = 'badge-dot';
-        badge.appendChild(badgeDot);
-
-        const badgeLabel = document.createElement('span');
-        badgeLabel.className = 'badge-label';
-        badgeLabel.textContent = event.title;
-        badge.appendChild(badgeLabel);
-
-        badge.addEventListener('click', (e) => {
-          e.stopPropagation();
-          selectedDate = cellDate;
-          selectedEventId = event.id;
-          render();
-        });
-
-        if (validUrl) {
-          badge.addEventListener('dblclick', (e) => {
-            e.stopPropagation();
-            window.open(event.url, '_blank');
-          });
-        }
-
-        cell.appendChild(badge);
-      });
+      if (hasOfficial) {
+        const dot = document.createElement('div');
+        dot.className = 'day-indicator official';
+        dot.setAttribute('aria-label', '공식 일정 있음');
+        indicatorWrapper.appendChild(dot);
+      }
+      if (hasUser) {
+        const dot = document.createElement('div');
+        dot.className = 'day-indicator user';
+        dot.setAttribute('aria-label', '개인 일정 있음');
+        indicatorWrapper.appendChild(dot);
+      }
+      cell.appendChild(indicatorWrapper);
     }
 
     if (cellDate.toDateString() === today.toDateString()) {
@@ -510,25 +494,19 @@ function updateMobileViewUI() {
 
   if (isMobileLayout()) {
     mobileTabbar.classList.remove('hidden');
-    if (mobileView === 'calendar') {
-      calendarPanel.classList.remove('hidden');
-      eventPanel.classList.add('hidden');
-      tabCalendarBtn.classList.add('active');
-      tabCalendarBtn.setAttribute('aria-selected', 'true');
-      tabEventsBtn.classList.remove('active');
-      tabEventsBtn.setAttribute('aria-selected', 'false');
-    } else {
-      calendarPanel.classList.add('hidden');
-      eventPanel.classList.remove('hidden');
-      tabCalendarBtn.classList.remove('active');
-      tabCalendarBtn.setAttribute('aria-selected', 'false');
-      tabEventsBtn.classList.add('active');
-      tabEventsBtn.setAttribute('aria-selected', 'true');
-    }
+    calendarPanel.classList.remove('hidden');
+    const showSheet = mobileView === 'events' || selectedDate;
+    eventPanel.classList.toggle('hidden', !showSheet);
+    eventPanel.classList.toggle('sheet-open', showSheet);
+    tabCalendarBtn.classList.toggle('active', !showSheet);
+    tabCalendarBtn.setAttribute('aria-selected', String(!showSheet));
+    tabEventsBtn.classList.toggle('active', showSheet);
+    tabEventsBtn.setAttribute('aria-selected', String(showSheet));
   } else {
     mobileTabbar.classList.add('hidden');
     calendarPanel.classList.remove('hidden');
     eventPanel.classList.remove('hidden');
+    eventPanel.classList.remove('sheet-open');
   }
 }
 
@@ -717,15 +695,19 @@ function bindEvents() {
     render();
   });
 
-  todayBtn.addEventListener('click', () => {
-    viewDate = new Date();
-    selectedDate = null;
-    render();
-  });
+  if (todayBtn) {
+    todayBtn.addEventListener('click', () => {
+      viewDate = new Date();
+      selectedDate = null;
+      render();
+    });
+  }
 
-  addEventBtn.addEventListener('click', () => {
-    openModal('add', selectedDate || new Date());
-  });
+  if (fabAddEventBtn) {
+    fabAddEventBtn.addEventListener('click', () => {
+      openModal('add', selectedDate || new Date());
+    });
+  }
 
   if (tabCalendarBtn && tabEventsBtn) {
     tabCalendarBtn.addEventListener('click', () => {
@@ -738,7 +720,13 @@ function bindEvents() {
     });
   }
 
-  jumpBtn.addEventListener('click', jumpToSelectedMonth);
+  if (yearSelect) {
+    yearSelect.addEventListener('change', jumpToSelectedMonth);
+  }
+
+  if (monthSelect) {
+    monthSelect.addEventListener('change', jumpToSelectedMonth);
+  }
 
   closeModalBtn.addEventListener('click', closeModal);
   if (cancelModalBtn) {
