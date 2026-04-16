@@ -494,14 +494,14 @@ function updateMobileViewUI() {
 
   if (isMobileLayout()) {
     mobileTabbar.classList.remove('hidden');
-    calendarPanel.classList.remove('hidden');
+    calendarPanel.classList.toggle('hidden', mobileView === 'events');
     const showSheet = mobileView === 'events' || selectedDate;
     eventPanel.classList.toggle('hidden', !showSheet);
     eventPanel.classList.toggle('sheet-open', showSheet);
-    tabCalendarBtn.classList.toggle('active', !showSheet);
-    tabCalendarBtn.setAttribute('aria-selected', String(!showSheet));
-    tabEventsBtn.classList.toggle('active', showSheet);
-    tabEventsBtn.setAttribute('aria-selected', String(showSheet));
+    tabCalendarBtn.classList.toggle('active', mobileView === 'calendar');
+    tabCalendarBtn.setAttribute('aria-selected', String(mobileView === 'calendar'));
+    tabEventsBtn.classList.toggle('active', mobileView === 'events');
+    tabEventsBtn.setAttribute('aria-selected', String(mobileView === 'events'));
   } else {
     mobileTabbar.classList.add('hidden');
     calendarPanel.classList.remove('hidden');
