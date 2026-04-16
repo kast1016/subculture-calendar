@@ -484,7 +484,7 @@ function renderEventList() {
 }
 
 function isMobileLayout() {
-  return window.matchMedia('(max-width: 640px)').matches;
+  return window.matchMedia('(max-width: 820px), (orientation: portrait) and (max-height: 1200px)').matches;
 }
 
 function updateMobileViewUI() {

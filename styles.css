@@ -726,7 +726,7 @@ textarea:focus-visible {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 820px) {
   body {
     padding: 8px 6px 88px;
     min-height: 100vh;
@@ -734,10 +734,10 @@ textarea:focus-visible {
 
   .app-shell {
     width: 100%;
-    min-height: 100vh;
-    max-height: 100vh;
+    min-height: auto;
+    max-height: none;
     padding-bottom: 0;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .app-grid {
@@ -837,7 +837,8 @@ textarea:focus-visible {
     gap: 4px;
     margin-bottom: 6px;
     min-height: 0;
-    height: calc(100vh - 236px);
+    max-height: calc(100vh - 236px);
+    height: auto;
   }
 
   .day-name,
