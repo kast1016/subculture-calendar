@@ -66,12 +66,11 @@ Windows에서 이 명령은 로컬 `tools/PortableGit/cmd`를 사용합니다.
 ## GitHub 릴리스
 현재 릴리스 자산 이름:
 - `subculture-calendar-setup.exe`
-- `subculture-calendar.apk`
 - `app-release-signed.apk`
 
 다운로드 페이지 기본 링크:
 - Windows 설치 파일: `https://github.com/kast1016/subculture-calendar/releases/latest/download/subculture-calendar-setup.exe`
-- Android APK: `https://github.com/kast1016/subculture-calendar/releases/latest/download/subculture-calendar.apk`
+- Android APK: `https://github.com/kast1016/subculture-calendar/releases/latest/download/app-release-signed.apk`
 - 릴리스 페이지: `https://github.com/kast1016/subculture-calendar/releases/latest`
 
 ## Supabase
