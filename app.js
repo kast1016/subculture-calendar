@@ -11,6 +11,7 @@ const selectedDayLabel = document.getElementById('selectedDayLabel');
 const prevMonthBtn = document.getElementById('prevMonthBtn');
 const nextMonthBtn = document.getElementById('nextMonthBtn');
 const todayBtn = document.getElementById('todayBtn');
+const topAddEventBtn = document.getElementById('topAddEventBtn');
 const yearSelect = document.getElementById('yearSelect');
 const monthSelect = document.getElementById('monthSelect');
 const fabAddEventBtn = document.getElementById('fabAddEventBtn');
@@ -700,6 +701,12 @@ function bindEvents() {
       viewDate = new Date();
       selectedDate = null;
       render();
+    });
+  }
+
+  if (topAddEventBtn) {
+    topAddEventBtn.addEventListener('click', () => {
+      openModal('add', selectedDate || new Date());
     });
   }
 

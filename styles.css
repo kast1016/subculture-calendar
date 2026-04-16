@@ -747,29 +747,35 @@ textarea:focus-visible {
   }
 
   .app-header {
-    padding: 10px 12px;
+    padding: 12px 14px;
     flex-direction: column;
     align-items: stretch;
-    gap: 6px;
+    gap: 8px;
+    background: rgba(20, 26, 40, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
   }
 
   .app-header h1 {
-    font-size: 1.5rem;
+    font-size: 1.55rem;
   }
 
   .header-actions {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     gap: 6px;
+    flex-wrap: wrap;
   }
 
   .date-picker-row {
     display: flex;
-    width: 100%;
+    width: auto;
     gap: 6px;
     flex-wrap: nowrap;
+    flex: 1 1 100%;
   }
 
   .picker-button {
@@ -778,6 +784,20 @@ textarea:focus-visible {
     min-width: 0;
     padding: 9px 10px;
     font-size: 0.92rem;
+  }
+
+  .header-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .header-buttons button {
+    min-width: 86px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    font-size: 0.92rem;
+    white-space: nowrap;
   }
 
   .calendar-top {
@@ -801,27 +821,55 @@ textarea:focus-visible {
     min-width: 38px;
   }
 
+  .calendar-panel {
+    min-height: calc(100vh - 190px);
+    overflow: hidden;
+    padding: 12px 10px 10px;
+    background: rgba(15, 19, 28, 0.95);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
   .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(5, minmax(0, 1fr));
     gap: 4px;
     margin-bottom: 6px;
     min-height: 0;
-    height: calc(100vh - 238px);
+    height: calc(100vh - 236px);
   }
 
   .day-name,
   .day-cell {
-    padding: 7px 5px;
+    padding: 7px 6px;
     min-height: 0;
+  }
+
+  .day-name {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    opacity: 0.85;
   }
 
   .day-cell {
     display: grid;
     grid-template-rows: auto 1fr auto;
     gap: 4px;
-    padding: 7px 5px;
+    padding: 8px 7px;
+    background: rgba(22, 28, 40, 0.92);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .day-cell.today {
+    background: rgba(34, 72, 141, 0.18);
+    border-color: rgba(95, 190, 255, 0.35);
+  }
+
+  .day-cell.selected {
+    background: rgba(255, 123, 114, 0.12);
+    border-color: rgba(255, 123, 114, 0.4);
   }
 
   .day-event-badge {
@@ -832,6 +880,7 @@ textarea:focus-visible {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
+    color: #d9e0ff;
   }
 
   .day-indicators {
