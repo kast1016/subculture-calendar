@@ -1,6 +1,6 @@
-# 서브컬처 행사 캘린더 앱
+﻿# 서브컬처 행사 캘린더
 
-`서브컬처 행사 캘린더`는 로컬 저장소와 정적 JSON 데이터를 활용하는 Vanilla JS 캘린더 앱입니다. 개인 일정과 공식 일정을 함께 관리하며, 월별 달력에서 행사 추가/수정/삭제가 가능합니다.
+`서브컬처 행사 캘린더`는 순수 JavaScript 기반 캘린더 앱입니다. 로컬 일정과 공식 이벤트를 함께 관리할 수 있으며, 웹, Android 모바일, Electron 데스크톱 버전을 지원합니다.
 
 ## 빠른 시작
 ```bash
@@ -9,20 +9,29 @@ npm start
 ```
 
 ## 프로젝트 구조
-- `index.html` — 앱 UI
+- `index.html` — 웹 앱 진입 페이지
+- `download.html` — 기기 감지 다운로드 랜딩 페이지
+- `download/index.html` — GitHub Pages `download/` 디렉터리 리디렉션
+- `404.html` — 잘못된 URL 접근 시 다운로드 페이지로 리디렉션
 - `styles.css` — 스타일 정의
 - `app.js` — 캘린더 및 일정 관리 로직
-- `events.json` — 기본 행사 데이터
-- `supabase-schema.sql` — Supabase DB 스키마
-- `supabaseClient.js` — Supabase 클라이언트 설정
+- `events.json` — 기본 공식 일정 데이터
+- `supabaseClient.js` — Supabase 연결 설정 (기본 비활성화)
 - `capacitor.config.ts` — Capacitor 모바일 설정
 - `android/` — Android 네이티브 프로젝트
 - `ios/` — iOS 네이티브 프로젝트
-- `scripts/automation/` — 자동화 스크립트
-- `tools/` — 로컬 Supabase CLI 등 도구
+- `scripts/` — 빌드 및 환경 설정 스크립트
+- `tools/` — 로컬 도구 및 Portable Git
 
 ## 실행 방법
-### 데스크톱
+### 웹 앱
+```bash
+npm install
+npm run build:web
+```
+웹 빌드 결과는 `www/`에 생성됩니다.
+
+### Electron 데스크톱 앱
 ```bash
 npm install
 npm start
@@ -31,101 +40,56 @@ npm start
 ### Android 빌드
 ```bash
 npm install
-npm run setup:windows-env
 npm run build:web
-npm run cap:add:android
 npm run cap:sync
-npm run cap:open:android
+cd android
+gradlew.bat assembleRelease
 ```
 
-디버그 APK:
+Android 릴리스 빌드 후 생성되는 파일:
 - `android/app/build/outputs/apk/debug/app-debug.apk`
+- `android/app/build/outputs/apk/release/app-release-unsigned.apk`
+- `android/app/build/outputs/apk/release/app-release-signed.apk` (수동 서명 시)
 
-### iOS 빌드
-Windows 환경에서는 직접 Xcode 빌드 대신 GitHub Actions를 사용합니다.
+### Android 릴리스 서명
+`android/app/build.gradle`는 프로젝트 루트의 `android/release.keystore` 파일이 존재하면 자동으로 서명하도록 구성되어 있습니다.
 
+`android/release.keystore`는 보안상 커밋되지 않으므로 안전하게 보관하세요.
+
+## GitHub Pages 배포
 ```bash
-npm install
-npm run build:web
-npm run cap:add:ios
-npm run cap:sync
+npm run deploy:gh-pages
 ```
 
-## 자동화 및 배포
-### 자동화 스크립트
-자동화 스크립트는 `scripts/automation/`에 모여 있습니다.
+Windows에서 이 명령은 로컬 `tools/PortableGit/cmd`를 사용합니다.
 
-- `scripts/automation/auto-setup.ps1` — `.env` 로드, Supabase CLI 설치, 스키마 적용, GitHub 시크릿 등록
-- `scripts/automation/apply-supabase-schema.js` / `.ps1` — Supabase 스키마 적용
-- `scripts/automation/set-github-secrets.js` / `.ps1` — GitHub Actions 시크릿 등록
-- `scripts/automation/load-env.ps1` — `.env` 파일 로드
-- `scripts/automation/install-supabase-cli.js` / `.ps1` — Supabase CLI 설치
-- `scripts/automation/crawl-events.mjs` — 이벤트 크롤링 자동화
+## GitHub 릴리스
+현재 릴리스 자산 이름:
+- `subculture-calendar-setup.exe`
+- `subculture-calendar.apk`
+- `app-release-signed.apk`
 
-### `.env` 예시
-```text
-SUPABASE_URL=https://semjfmsbjwfcdeiigxzf.supabase.co
-SUPABASE_ANON_KEY=sb_publishable_XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-SUPABASE_SERVICE_KEY=your-service-role-key
-SUPABASE_DB_URL=postgresql://postgres:YOUR_DB_PASSWORD@db.semjfmsbjwfcdeiigxzf.supabase.co:5432/postgres
-SUPABASE_PROJECT_REF=semjfmsbjwfcdeiigxzf
-GITHUB_TOKEN=ghp_yourgithubtokenhere
-GITHUB_REPOSITORY=kast1016/subculture-calendar
-```
+다운로드 페이지 기본 링크:
+- Windows 설치 파일: `https://github.com/kast1016/subculture-calendar/releases/latest/download/subculture-calendar-setup.exe`
+- Android APK: `https://github.com/kast1016/subculture-calendar/releases/latest/download/subculture-calendar.apk`
+- 릴리스 페이지: `https://github.com/kast1016/subculture-calendar/releases/latest`
 
-### GitHub Secrets 등록
-```powershell
-$env:GITHUB_TOKEN='<your-github-token>'
-$env:SUPABASE_URL='https://semjfmsbjwfcdeiigxzf.supabase.co'
-$env:SUPABASE_SERVICE_KEY='<your-service-role-key>'
-$env:GITHUB_REPOSITORY='kast1016/subculture-calendar'
-.\scriptsutomation\set-github-secrets.ps1
-```
+## Supabase
+`supabaseClient.js`는 현재 기본으로 `supabase = null` 상태입니다. 실제 Supabase 연결을 사용하려면 파일을 수정해 주세요.
 
-### Supabase 스키마 적용
-```powershell
-$env:SUPABASE_URL='https://semjfmsbjwfcdeiigxzf.supabase.co'
-$env:SUPABASE_SERVICE_KEY='<your-service-role-key>'
-.\scriptsutomationpply-supabase-schema.ps1
-```
-
-원격 DB 직접 연결:
-```text
-SUPABASE_DB_URL=postgresql://postgres:YOUR_DB_PASSWORD@db.semjfmsbjwfcdeiigxzf.supabase.co:5432/postgres
-# 또는
-SUPABASE_DB_PASSWORD=YOUR_DB_PASSWORD
-SUPABASE_PROJECT_REF=semjfmsbjwfcdeiigxzf
-```
-
-> 원격 DB 호스트는 `db.<project_ref>.supabase.co` 형식이어야 합니다.
-
-### GitHub Actions
-- `apply_supabase_schema` 워크플로: `.github/workflows/apply_supabase_schema.yml`
-- 기존 이벤트 동기화: `.github/workflows/daily_update.yml`
-
-## Supabase 정보
-- `supabaseClient.js` URL: `https://semjfmsbjwfcdeiigxzf.supabase.co`
-- `supabaseClient.js` Anon Key: `sb_publishable_qZ0ppArlwacxAJWWqb0NOw_tOyYCV3b`
-
-## 이벤트 데이터
-기본 공식 일정은 `events.json`에서 불러옵니다.
-
-예시:
-```json
-[
-  { "date": "2026-05-02", "title": "제177회 서울 코믹월드", "location": "킨텍스", "category": "코믹월드", "url": "https://comicw.co.kr/" },
-  { "date": "2026-05-14", "title": "2026 플레이엑스포", "location": "킨텍스", "category": "게임전시회", "url": "https://www.playx4.or.kr/" }
-]
-```
-
-## 주요 기능
-- 로컬 저장소에 개인 일정 저장
-- `events.json` 기반 공식 일정 로드
-- 달력 UI와 이벤트 배지
-- 일정 추가/수정/삭제
+## 유용한 스크립트
+- `npm run build:web` — 웹 앱 빌드
+- `npm run cap:sync` — Capacitor 동기화
+- `npm run cap:open:android` — Android 스튜디오 실행
+- `npm run android:build-debug` — Android 디버그 빌드
+- `npm run android:build-release` — Android 릴리스 빌드
+- `npm run deploy:gh-pages` — GitHub Pages 배포
+- `npm run setup:windows-env` — Windows 환경 설정
 
 ## 참고
-- `file://` 환경에서는 `fetch`가 실패할 수 있습니다.
+- `android/release.keystore`는 `.gitignore`에 포함되어 있습니다.
+- `404.html` 및 `index.html`은 모두 다운로드 페이지로 리디렉션됩니다.
+- `download.html`은 접속 기기를 자동 감지하여 가장 적합한 설치 링크를 표시합니다.
+- `file://` 환경에서는 브라우저 보안 제한으로 `fetch`가 실패할 수 있습니다.
 - `http://` 또는 `https://` 환경에서 실행하세요.
-- Electron 앱은 로컬 `events.json`을 직접 읽습니다.
 - 모바일 앱은 `www/` 빌드 결과를 사용합니다.

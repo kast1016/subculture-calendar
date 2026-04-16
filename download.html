@@ -91,20 +91,21 @@
 
     <div class="buttons" id="downloadButtons">
       <a class="button" id="mainButton" href="#">다운로드 준비 중...</a>
-      <a class="button secondary hidden" id="fallbackWindows" href="https://github.com/kast1016/subculture-calendar/releases/download/v1.0.0/subculture-calendar-setup.exe">Windows용 .exe</a>
-      <a class="button secondary hidden" id="fallbackAndroid" href="https://github.com/kast1016/subculture-calendar/releases/download/v1.0.0/subculture-calendar.apk">Android용 .apk</a>
-      <a class="button secondary hidden" id="fallbackIos" href="https://github.com/kast1016/subculture-calendar/releases/tag/v1.0.0">릴리스 페이지 보기</a>
+      <a class="button secondary hidden" id="fallbackWindows" href="https://github.com/kast1016/subculture-calendar/releases/latest/download/subculture-calendar-setup.exe">Windows용 .exe</a>
+      <a class="button secondary hidden" id="fallbackAndroid" href="https://github.com/kast1016/subculture-calendar/releases/latest/download/subculture-calendar.apk">Android용 .apk</a>
+      <a class="button secondary hidden" id="fallbackIos" href="https://github.com/kast1016/subculture-calendar/releases/latest">릴리스 페이지 보기</a>
     </div>
 
     <div class="note" id="noteText">기기 인식이 실패하면 아래 버튼을 사용하세요.</div>
   </div>
 
   <script>
-    const releaseBase = 'https://github.com/kast1016/subculture-calendar/releases/download/v1.0.0/';
-    const releasePage = 'https://github.com/kast1016/subculture-calendar/releases/tag/v1.0.0';
+    const releaseBase = 'https://github.com/kast1016/subculture-calendar/releases/latest/download/';
+    const releasePage = 'https://github.com/kast1016/subculture-calendar/releases/latest';
     const downloadLinks = {
       windows: releaseBase + 'subculture-calendar-setup.exe',
       android: releaseBase + 'subculture-calendar.apk',
+      ios: releasePage,
       macos: releasePage,
       unknown: releasePage,
     };
@@ -132,7 +133,7 @@
       detected.textContent = `감지된 기기: ${device}`;
       fallbackWindows.href = downloadLinks.windows;
       fallbackAndroid.href = downloadLinks.android;
-      fallbackIos.href = downloadLinks.unknown;
+      fallbackIos.href = downloadLinks.ios;
       fallbackIos.classList.remove('hidden');
 
       fallbackWindows.classList.remove('hidden');
@@ -144,8 +145,11 @@
       } else if (device === 'windows') {
         mainButton.textContent = 'Windows 설치 프로그램 다운로드';
         mainButton.href = downloadLinks.windows;
+      } else if (device === 'ios') {
+        mainButton.textContent = 'iOS 릴리스 페이지로 이동';
+        mainButton.href = downloadLinks.ios;
       } else if (device === 'macos') {
-        mainButton.textContent = '릴리스 페이지로 이동';
+        mainButton.textContent = 'macOS 릴리스 페이지로 이동';
         mainButton.href = downloadLinks.macos;
       } else {
         mainButton.textContent = '릴리스 페이지로 이동';

@@ -6,6 +6,8 @@ const outDir = path.join(root, 'www');
 const filesToCopy = [
   'index.html',
   'download.html',
+  'download/index.html',
+  '404.html',
   'styles.css',
   'app.js',
   'supabaseClient.js',
@@ -13,6 +15,7 @@ const filesToCopy = [
 ];
 
 function copyFile(src, dest) {
+  ensureDir(path.dirname(dest));
   fs.copyFileSync(src, dest);
 }
 

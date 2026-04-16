@@ -18,7 +18,7 @@
     "build:win": "npm run build:web && npx electron-builder --win nsis --x64",
     "package:win": "npm run build:win",
     "serve:www": "node scripts/start-share-server.js",
-    "deploy:gh-pages": "npm run build:web && npx gh-pages -d www",
+    "deploy:gh-pages": "npm run build:web && set \"PATH=%CD%\\tools\\PortableGit\\cmd;%PATH%\" && npx gh-pages -d www -b gh-pages --repo https://github.com/kast1016/subculture-calendar.git",
     "build:all": "npm run build:web && npx electron-builder",
     "apply:supabase": "node scripts/apply-supabase-schema.js",
     "setup:windows-env": "powershell.exe -ExecutionPolicy Bypass -File scripts/setup-windows-env.ps1"
@@ -37,7 +37,6 @@
       "app.js",
       "supabaseClient.js",
       "events.json",
-      "www/**",
       "assets/icon.ico"
     ],
     "win": {

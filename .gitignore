@@ -25,8 +25,6 @@ www/
 node_modules/
 
 # Build / output folders
-dist/
-www/
 downloads/
 
 # Tools
@@ -46,4 +44,10 @@ Thumbs.db
 
 # Android/iOS local configuration
 android/local.properties
+android/release.keystore
+android/.gradle/
+android/app/build/
+android/build/
+ios/Pods/
+ios/build/
 ios/App/App/GoogleService-Info.plist
